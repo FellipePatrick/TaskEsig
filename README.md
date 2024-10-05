@@ -70,11 +70,11 @@ Copiar código
 docker-compose up
 Execute a aplicação Spring Boot:
 
-bash
-Copiar código
-mvn spring-boot:run
-Acesse a aplicação no navegador:
-
+  ```bash
+  Copiar código
+  mvn spring-boot:run
+  Acesse a aplicação no navegador:
+  ````
 arduino
 Copiar código
 http://localhost:8080/
