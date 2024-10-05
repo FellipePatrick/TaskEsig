@@ -31,7 +31,7 @@ Após clonar o projeto, execute o comando para atualizar as dependências:
  ```bash
     mvn clean install
   ````
-Rode a aplicação que estará na porta: http://localhost:8080/
+Após isso, rode e a aplicação que estará na porta: http://localhost:8080/
 
 
 ## Ativar back-end
@@ -59,11 +59,9 @@ Como Executar o Projeto
 Clone este repositório:
 
 Atualize as dependências do projeto:
-
 ```bash
 mvn clean install
 ```
-
 Configure o arquivo .env para o banco de dados.
 
 Inicie o banco de dados utilizando Docker:
@@ -72,11 +70,9 @@ docker-compose up
 ```
 Execute a aplicação Spring Boot:
   ```bash
-  Copiar código
   mvn spring-boot:run
-  Acesse a aplicação no navegador:
   ````
-Acesse o site:
+Acesse a aplicação no seu navegador:
  ```bash
     http://localhost:8080/
   ````
