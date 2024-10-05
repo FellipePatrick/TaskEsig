@@ -1,0 +1,20 @@
+spring:
+  application:
+    name: CRUD
+  # Database connection settings
+  datasource:
+    url: jdbc:postgresql://${DATABASE_HOST}:${DATABASE_PORT}/${DATABASE_NAME}?serverTimezone=UTC
+    username: postgres
+    password: 123
+    driver-class-name: org.postgresql.Driver
+  #JPA Settings
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+    generate-ddl: true
+    hibernate:
+      ddl-auto: update
+      #ddl-auto: create-drop
+server:
+  port: 8081

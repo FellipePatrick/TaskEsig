@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h:head>
+    <title>Crud Tarefas</title>
+
+    <!-- Incluindo Bootstrap CSS usando o namespace XHTML -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+          rel="stylesheet"
+          type="text/css"
+          integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+          crossorigin="anonymous"/>
+</h:head>
+
+<h:body>
+    <div class="container mt-5">
+        <h1 class="text-center mb-4">Gerenciamento de Tarefas</h1>
+
+        <!-- Formulário de cadastro -->
+        <div class="card mb-5">
+            <div class="card-header">
+                <h4>Adicionar Tarefa</h4>
+            </div>
+            <div class="card-body">
+                <h:form onsubmit="cadastrarTarefa(event)">
+                    <div class="mb-3">
+                        <label for="titulo" class="form-label">Título</label>
+                        <input id="titulo" class="form-control" placeholder="Digite o título da tarefa" required="true"/>
+                    </div>
+                    <div class="mb-3">
+                        <label for="responsavel" class="form-label">Responsável</label>
+                        <select id="responsavel" class="form-select" required="true">
+                            <option value="">Selecione o responsável</option>
+                            <option value="Fellipe">Fellipe</option>
+                            <option value="Patrick">Patrick</option>
+                            <option value="Brito">Brito</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="descricao" class="form-label">Descrição</label>
+                        <textarea id="descricao" class="form-control" placeholder="Digite a descrição da tarefa" required="true"></textarea>
+                    </div>
+                    <div class="mb-3">
+                        <label for="prioridade" class="form-label">Prioridade</label>
+                        <select id="prioridade" class="form-select" required="true">
+                            <option value="">Selecione a prioridade</option>
+                            <option value="Baixa">Baixa</option>
+                            <option value="Média">Média</option>
+                            <option value="Alta">Alta</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="deadLine" class="form-label">Data de Vencimento</label>
+                        <input id="deadLine" type="datetime-local" class="form-control" required="true"/>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Cadastrar</button>
+                </h:form>
+            </div>
+        </div>
+        <div class="mb-4">
+            <h4>Filtros</h4>
+            <div class="row">
+                <div class="col-md-3 mb-3">
+                    <label for="filtroTitulo" class="form-label">Título</label>
+                    <input id="filtroTitulo" class="form-control" placeholder="Filtrar pelo título"/>
+                </div>
+                <div class="col-md-3 mb-3">
+                    <label for="filtroResponsavel" class="form-label">Responsável</label>
+                    <select id="filtroResponsavel" class="form-select">
+                        <option value="">Selecione o responsável</option>
+                        <option value="Fellipe">Fellipe</option>
+                        <option value="Patrick">Patrick</option>
+                        <option value="Brito">Brito</option>
+                    </select>
+                </div>
+                <div class="col-md-3 mb-3">
+                    <label for="filtroPrioridade" class="form-label">Prioridade</label>
+                    <select id="filtroPrioridade" class="form-select">
+                        <option value="">Selecione a prioridade</option>
+                        <option value="Baixa">Baixa</option>
+                        <option value="Média">Média</option>
+                        <option value="Alta">Alta</option>
+                    </select>
+                </div>
+                <div class="col-md-3 mb-3">
+                    <label for="filtroStatus" class="form-label">Status</label>
+                    <select id="filtroStatus" class="form-select">
+                        <option value="">Selecione o Status</option>
+                        <option value="CRIADO">Criado</option>
+                        <option value="ANDAMENTO">Andamento</option>
+                        <option value="CONCLUIDO">Concluido</option>
+                    </select>
+                </div>
+                <div class="col-md-3 mb-3">
+                    <label for="filtroData" class="form-label">Data de Vencimento</label>
+                    <input id="filtroData" type="date" class="form-control"/>
+                </div>
+            </div>
+            <button type="button" class="btn btn-primary" onclick="filtrarTarefas()">Filtrar</button>
+            <button class="btn btn-secondary" onclick="limparFiltros()">Limpar Filtros</button>
+        </div>
+        <!-- Tabela de tarefas -->
+        <div class="card">
+            <div class="card-header">
+                <h4>Lista de Tarefas</h4>
+            </div>
+            <div class="card-body">
+                <table class="table table-striped" id="tarefasTable">
+                    <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Título</th>
+                        <th>Responsável</th>
+                        <th>Descrição</th>
+                        <th>Prioridade</th>
+                        <th>Data de Vencimento</th>
+                        <th>Status</th>
+                        <th>Ações</th>
+                    </tr>
+                    </thead>
+                    <tbody id="tarefasBody">
+                    <!-- Os dados serão carregados aqui via JavaScript -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Modal de Edição -->
+        <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="editModalLabel">Editar Tarefa</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <h:form onsubmit="editarTarefa(event)">
+                            <div class="mb-3">
+                                <label for="editId" class="form-label">ID</label>
+                                <input id="editId" class="form-control" readonly="true"/>
+                            </div>
+                            <div class="mb-3">
+                                <label for="editTitulo" class="form-label">Título</label>
+                                <input id="editTitulo" class="form-control" required="true"/>
+                            </div>
+                            <div class="mb-3">
+                                <label for="editResponsavel" class="form-label">Responsável</label>
+                                <input id="editResponsavel" class="form-control" required="true"/>
+                            </div>
+                            <div class="mb-3">
+                                <label for="editDescricao" class="form-label">Descrição</label>
+                                <textarea id="editDescricao" class="form-control" required="true"></textarea>
+                            </div>
+                            <div class="mb-3">
+                                <label for="editPrioridade" class="form-label">Prioridade</label>
+                                <select id="editPrioridade" class="form-select" required="true">
+                                    <option value="Baixa">Baixa</option>
+                                    <option value="Média">Média</option>
+                                    <option value="Alta">Alta</option>
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <label for="editDeadLine" class="form-label">Data de Vencimento</label>
+                                <input id="editDeadLine" type="datetime-local" class="form-control" required="true"/>
+                            </div>
+                            <div class="mb-3">
+                                <label for="editStatus" class="form-label">Status</label>
+                                <select id="editStatus" class="form-select" required="true">
+                                    <option value="CRIADO">Criado</option>
+                                    <option value="ANDAMENTO">Andamento</option>
+                                    <option value="CONCLUIDO">Concluído</option>
+                                </select>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Salvar</button>
+                        </h:form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Incluindo Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+            crossorigin="anonymous"></script>
+
+    <!-- Script para consumir a API -->
+    <script src="./main.js"
+            crossorigin="anonymous"></script>
+</h:body>
+</html>
