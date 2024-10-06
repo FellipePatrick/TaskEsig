@@ -65,11 +65,6 @@ Assim como a api a interface tambem roda no intellij
 
 A instalação do wildfly se faz necessario para rodar o projeto, após a instalação adicione o wildfly como application server
 
-Configurando o wildfly:
- ````bash
-    https://www.youtube.com/watch?v=Amu_sBNT42U
-  ````
-
 Rode o projeto com o wildfly
 
 Verifique a interface na URL:
