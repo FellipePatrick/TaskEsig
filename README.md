@@ -69,7 +69,7 @@ Rode o projeto com o wildfly
 
 Verifique a interface na URL:
  ````bash
-    http://localhost:8080
+    http://localhost:8080/tarefas
   ````
 
 ## Video auxiliar para configuração
