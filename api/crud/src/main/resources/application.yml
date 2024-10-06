@@ -3,7 +3,7 @@ spring:
     name: CRUD
   # Database connection settings
   datasource:
-    url: jdbc:postgresql://${DATABASE_HOST}:${DATABASE_PORT}/${DATABASE_NAME}?serverTimezone=UTC
+    url: jdbc:postgresql://localhost:5432/crud?serverTimezone=UTC
     username: postgres
     password: 123
     driver-class-name: org.postgresql.Driver
@@ -15,6 +15,5 @@ spring:
     generate-ddl: true
     hibernate:
       ddl-auto: update
-      #ddl-auto: create-drop
 server:
   port: 8081

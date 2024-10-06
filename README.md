@@ -1,87 +1,86 @@
 # Desafio ESIG
 
-Este repositório contém a resolução de um desafio de criação de uma aplicação CRUD (Create, Read, Update, Delete) utilizando Java.
+### - **Observações**
+
+**Do sistema**:O  nome da aplicação é Sistema de Gestão de Tarefas, nessa resolução optei por me basear no exemeplo fornecido só que com um pouco mais de tecnologias. Essa versão de implementação se divide em dois modulos,a interface gráfica que é feita com o JSF e roda em cima do wildFly, e a API RestFull nivel 3 que implementa a lógica de negócio, feita em spring boot. Para a comunicação entre interface e api foi escolhido o JS, para otimizar o desempenho do servidor, uma vez que esse processamento ficara do lado do cliente. Poderia tambem fazer essa comicação com a biblioteca rest template do proprio java, porem visando um pouco mais de desempenho optei por javaScript.
+
+**Itens implementados**:
+
+- A: O item referente foi implementado com a interface gráfica
+
+- B: A persistencia dos dados é atráves da API restFull nivel 3
+
+- C: O JPA é utilizado na API
+
+- E: Acesse o sistema no link:
+
+- F: Os direnciais que julguei conveniente é a criação de uma API RestFull nivel 3, com a implementação da paginação e o Hateoas e a integração de sistemas interface-api.
+
 
 ## Tecnologias Utilizadas
 
 - **Java**: Linguagem de programação principal utilizada na aplicação.
 - **JSF (JavaServer Faces)**: Framework utilizado no front-end para renderizar as páginas.
-- **Spring Boot**: Framework utilizado no back-end da API RESTful nível 3, responsável pelas funcionalidades de negócio e operações no banco de dados.
+- **Spring Boot**: Framework utilizado para desenvolver a API RESTfull nível 3, responsável pelas funcionalidades de negócio e operações no banco de dados.
 - **JPA (Java Persistence API)**: API utilizada para persistência e gerenciamento de dados.
 - **JavaScript (JS)**: Linguagem utilizada para comunicação entre a interface e a API.
 - **PostgreSQL**: Banco de dados utilizado, rodando em um container Docker.
 
-## Estrutura do Projeto
+# Configuração de ambiente
 
-## Ativar Front-end
 
-### Front-end (JSF)
+## Configurando a API RestFull Nivel 3
 
-A interface é responsável por exibir as tarefas cadastradas, além de possibilitar a edição, o cadastro e a exclusão dessas tarefas.
+É obrigatorio ter o JDK 21 ou superior para rodar o projeto.
 
-#### Dependências:
+Primeiramente o projeto está configurado para ser utilizado no intellij
+
+- **Intellij IDEA Ultimate**: versão 2024.2.3 ou superior
+
+O sistema utiliza o Docker, caso queira utilizar um SGB altere no arquivo application.yml
+
+Configurando o Docker
+
+- **Docker**: versão 4.34.2 ou superior
+
+Após a instalação do Docker e Intellij, abra a pasta crud dentro da pasta api no intellij
+
+Rode o comando:
+
+```bash
+docker-compose up
+```
+A api já está pronta para ser utilizada
+
+Verifique a api na URL:
+ ````bash
+    http://localhost:8081/tarefas/
+  ````
+
+## Configurando a Interface gráfica
+
+Assim como a api a interface tambem roda no intellij
+
 - **WildFly**: Versão 34.0.0 ou superior.
-- **Apache Maven**: Versão 3.9.9 ou superior.
 
-Clone o repositorio
- ```bash
-https://github.com/FellipePatrick/TaskEsig.git
-````
-Após clonar o projeto, execute o comando para atualizar as dependências:
- ```bash
-    mvn clean install
-  ````
-Após isso, rode e a aplicação que estará na porta: http://localhost:8080/
+A instalação do wildfly se faz necessario para rodar o projeto, após a instalação adicione o wildfly como application server
 
-
-## Ativar back-end
-Back-end (Spring Boot)
-O back-end é responsável por gerenciar os dados da aplicação e os serviços associados.
-
-Dependências:
-Java JDK: Versão 21 ou superior.
-Spring Boot: Framework para gerenciamento de dados e lógica de negócio.
-Banco de Dados
-O banco de dados utilizado é o PostgreSQL, rodando em um container Docker.
-
-Configuração:
-Configure o arquivo .env de acordo com seu Sistema de Gerenciamento de Banco de Dados (SGBD).
-Certifique-se de ter o Docker instalado na máquina.
-Para iniciar o container do banco de dados, execute o seguinte comando:
-```bash
-docker-compose up
-```
-### Principais Camadas do Back-end
-Controller: Responsável por receber as requisições do front-end e delegar as operações de CRUD para os serviços apropriados.
-Service: Contém a lógica de negócio e realiza as operações de manipulação dos dados utilizando JPA.
-Repository: Interface responsável pela interação direta com o banco de dados.
-Como Executar o Projeto
-Clone este repositório:
-
-Atualize as dependências do projeto:
-```bash
-mvn clean install
-```
-Configure o arquivo .env para o banco de dados.
-
-Inicie o banco de dados utilizando Docker:
-```bash
-docker-compose up
-```
-Execute a aplicação Spring Boot:
-  ```bash
-  mvn spring-boot:run
-  ````
-Acesse a aplicação no seu navegador:
- ```bash
-    http://localhost:8080/
+Configurando o wildfly:
+ ````bash
+    https://www.youtube.com/watch?v=Amu_sBNT42U
   ````
 
-Funcionalidades
-A aplicação permite as seguintes operações de CRUD:
+Rode o projeto com o wildfly
 
-Criar novas tarefas.
-Listar todas as tarefas.
-Editar tarefas existentes.
-Excluir tarefas.
+Verifique a interface na URL:
+ ````bash
+    http://localhost:8080
+  ````
 
+## Video auxiliar para configuração
+
+Acesse o link do video:
+
+ ````bash
+    https://youtu.be/YNEB4utsGkA
+  ````

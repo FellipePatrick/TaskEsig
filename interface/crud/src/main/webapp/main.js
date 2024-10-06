@@ -44,23 +44,21 @@ function adicionarTarefaTabela(tarefa) {
     tbody.appendChild(tr);
 }
 
-// Função para filtrar tarefas com base nos campos de filtro
 function filtrarTarefas() {
     const titulo = document.getElementById('filtroTitulo').value.toLowerCase();
     const responsavel = document.getElementById('filtroResponsavel').value.toLowerCase();
     const prioridade = document.getElementById('filtroPrioridade').value.toLowerCase();
-    const data = document.getElementById('filtroData').value;
     const status = document.getElementById('filtroStatus').value.toLowerCase();
 
     const tarefasFiltradas = todasTarefas.filter(tarefa => {
         const tituloMatch = tarefa.titulo.toLowerCase().includes(titulo);
         const responsavelMatch = tarefa.responsavel.toLowerCase().includes(responsavel);
         const prioridadeMatch = tarefa.prioridade.toLowerCase().includes(prioridade);
-        const dataMatch = !data || tarefa.deadLine === data; // Se data for preenchida, compara diretamente
+
         const statusMatch = tarefa.status.toLowerCase().includes(status);
 
         // Retorna verdadeiro apenas se todos os critérios forem atendidos
-        return tituloMatch && responsavelMatch && prioridadeMatch && dataMatch && statusMatch;
+        return tituloMatch && responsavelMatch && prioridadeMatch && statusMatch;
     });
 
     atualizarTabela(tarefasFiltradas);
