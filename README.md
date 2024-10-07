@@ -2,7 +2,7 @@
 
 ### - **Observações**
 
-**Do sistema**:O  nome da aplicação é Sistema de Gestão de Tarefas, nessa resolução optei por me basear no exemeplo fornecido só que com um pouco mais de tecnologias. Essa versão de implementação se divide em dois modulos,a interface gráfica que é feita com o JSF e roda em cima do wildFly, e a API RestFull nivel 3 que implementa a lógica de negócio, feita em spring boot. Para a comunicação entre interface e api foi escolhido o JS, para otimizar o desempenho do servidor, uma vez que esse processamento ficara do lado do cliente. Poderia tambem fazer essa comicação com a biblioteca rest template do proprio java, porem visando um pouco mais de desempenho optei por javaScript.
+**Do sistema**: O nome da aplicação é Sistema de Gestão de Tarefas, nessa resolução optei por me basear no exemplo fornecido só que com um pouco mais de tecnologias. Essa versão de implementação se divide em dois modulos,a interface gráfica que é feita com o JSF e roda em cima do wildFly, e a API RestFull nivel 3 que implementa a lógica de negócio, feita em spring boot. Para a comunicação entre interface e api foi escolhido o JS, para otimizar o desempenho do servidor, uma vez que esse processamento ficara do lado do cliente. Poderia tambem fazer essa comicação com a biblioteca rest template do proprio java, porem visando um pouco mais de desempenho optei por javaScript.
 
 **Itens implementados**:
 
@@ -68,16 +68,11 @@ Link: https://www.wildfly.org/downloads/
 
 A instalação do wildfly se faz necessario para rodar o projeto, após a instalação adicione o wildfly como application server
 
-Configurando o wildfly:
- ````bash
-    https://www.youtube.com/watch?v=Amu_sBNT42U
-  ````
-
 Rode o projeto com o wildfly
 
 Verifique a interface na URL:
  ````bash
-    http://localhost:8080
+    http://localhost:8080/tarefas
   ````
 
 ## Video auxiliar para configuração
