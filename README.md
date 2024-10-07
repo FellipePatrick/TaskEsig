@@ -12,9 +12,8 @@
 
 - C: O JPA é utilizado na API
 
-- E: Acesse o sistema no link:
 
-- F: Os direnciais que julguei conveniente é a criação de uma API RestFull nivel 3, com a implementação da paginação e o Hateoas e a integração de sistemas interface-api.
+- F: Os direnciais: criação de uma API RestFull nivel 3, com a implementação da paginação e o Hateoas e a integração de sistemas interface-api, JavaScript, CSS e BootStrap 5.
 
 
 ## Tecnologias Utilizadas
@@ -62,6 +61,10 @@ Verifique a api na URL:
 Assim como a api a interface tambem roda no intellij
 
 - **WildFly**: Versão 34.0.0 ou superior.
+
+Baixe o zip e extraia
+
+Link: https://www.wildfly.org/downloads/
 
 A instalação do wildfly se faz necessario para rodar o projeto, após a instalação adicione o wildfly como application server
 
