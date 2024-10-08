@@ -2,7 +2,7 @@ let todasTarefas = []; // Armazena todas as tarefas carregadas inicialmente
 
 // Função para listar todas as tarefas
 function listarTarefas() {
-    fetch('/api/tarefas/')
+    fetch('http://localhost:8081/tarefas/')
         .then(response => response.json())
         .then(data => {
             todasTarefas = data.content; // Armazena todas as tarefas carregadas
@@ -100,7 +100,7 @@ function cadastrarTarefa(event) {
     const deadLine = document.getElementById('deadLine').value;
     const status = "CRIADO";
 
-    fetch('/api/tarefas/', {
+    fetch('http://localhost:8081/tarefas/', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -136,7 +136,7 @@ function editarTarefa(event) {
     const deadLine = document.getElementById('editDeadLine').value;
     const status = document.getElementById('editStatus').value;
 
-    fetch(`/api/tarefas/${id}`, {
+    fetch(`http://localhost:8081/tarefas/${id}`, {
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json'
@@ -151,7 +151,7 @@ function editarTarefa(event) {
 
 // Função para excluir uma tarefa
 function excluirTarefa(id) {
-    fetch(`/api/tarefas/${id}`, {
+    fetch(`http://localhost:8081/tarefas/${id}`, {
         method: 'DELETE'
     })
         .then(() => {
