@@ -12,6 +12,7 @@
 
 - C: O JPA é utilizado na API
 
+- E: Acesse o sistema: https://esig.cog.d3tu.com/tarefas/
 
 - F: Os direnciais: criação de uma API RestFull nivel 3, com a implementação da paginação e o Hateoas e a integração de sistemas interface-api, JavaScript, CSS e BootStrap 5.
 
