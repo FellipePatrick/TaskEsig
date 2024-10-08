@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 
 // @CrossOrigin(origins = "${HOST_URL}")
-@CrossOrigin(origins = "http://localhost:8080")
+@CrossOrigin(origins = "https://esig.cog.d3tu.com")
 @RestController
 @RequestMapping("/tarefas/")
 @AllArgsConstructor
